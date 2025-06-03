@@ -19,3 +19,4 @@ See the `widgets` folder for examples such as:
 
 - `payment-widget.html` – minimal example showing how to embed a Kaspa payment form.
 - `kiwi-wallet-widget.html` – connects to the [Kasplex Kiwi SDK](https://github.com/kasplex/sdk-kiwi) for in-wallet interactions.
+- `token-swap-widget.html` – a simple interface for swapping KRC-20 tokens.

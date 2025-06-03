@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRC-20 Token Swap Widget</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .wallet-button, .copy-button {
+      background: #02ABB8;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .theme-toggle {
+      background: #e0e0e0;
+      border: none;
+      border-radius: 12px;
+      padding: 6px 12px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+    .dark-mode .swap-container,
+    .dark-mode .embed-container,
+    .dark-mode .modal-content {
+      background: #1e1e1e;
+      color: #fff;
+    }
+    .swap-container, .embed-container {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 24px;
+      width: 400px;
+      margin-bottom: 30px;
+    }
+    .swap-header {
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .info-icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+      font-size: 18px;
+      color: #02ABB8;
+    }
+    .token-input {
+      background: #f0f0f0;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    .token-input label {
+      font-size: 14px;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .token-select-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .token-input input {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      width: 70%;
+    }
+    .token-button {
+      background: #e0e0e0;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .token-button img {
+      width: 16px;
+      height: 16px;
+    }
+    .balance-text {
+      font-size: 12px;
+      margin-top: 4px;
+      text-align: right;
+    }
+    .switch-button {
+      background: #02ABB8;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto 16px;
+    }
+    .swap-button {
+      background: #02ABB8;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      width: 100%;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    .rate-preview {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin-top: -8px;
+      margin-bottom: 16px;
+    }
+    .embed-container textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      font-size: 12px;
+      font-family: monospace;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+    }
+    .token-option {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+    .token-option:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <button class="wallet-button" onclick="alert('Wallet connect coming soon')">Connect Wallet</button>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <div class="swap-container">
+    <div class="swap-header">
+      <h2>Swap Tokens</h2>
+      <span class="info-icon" onclick="showInfo()">ℹ️</span>
+    </div>
+    <div class="token-input">
+      <label>You pay</label>
+      <div class="balance-text">Balance: 50.15311</div>
+      <div class="token-select-row">
+        <input type="number" placeholder="0.0">
+        <button class="token-button" id="tokenFromBtn" onclick="openTokenModal('from')">
+          <img src="https://kaspa.org/assets/kaspa-logo.svg" id="tokenFromImg" alt="KAS"> <span id="tokenFromLabel">KAS</span>
+        </button>
+      </div>
+    </div>
+    <button class="switch-button" onclick="switchTokens()">⇅</button>
+    <div class="token-input">
+      <label>You receive</label>
+      <div class="token-select-row">
+        <input type="number" placeholder="0.0" disabled>
+        <button class="token-button" id="tokenToBtn" onclick="openTokenModal('to')">
+          <img src="https://via.placeholder.com/16" id="tokenToImg" alt=""> <span id="tokenToLabel">Select token</span>
+        </button>
+      </div>
+    </div>
+    <div class="rate-preview">Estimated rate: 1 KAS ≈ 97.5 KREX</div>
+    <button class="swap-button" onclick="swapTokens()">Swap</button>
+  </div>
+
+  <div class="embed-container">
+    <h3>Embed Swap Token Widget</h3>
+    <label>Widget Configuration:</label>
+    <textarea id="embedCode" readonly><iframe src="https://example.com/widget?from=KAS&to=KREX" width="400" height="600"></iframe></textarea>
+    <button class="copy-button" onclick="copyEmbedCode()">Copy to Clipboard</button>
+  </div>
+
+  <div id="tokenModal" class="modal">
+    <div class="modal-content">
+      <h3>Select Token</h3>
+      <div class="token-option" onclick="selectToken('KAS')">KAS</div>
+      <div class="token-option" onclick="selectToken('KREX')">KREX</div>
+      <div class="token-option" onclick="selectToken('DINO')">DINO</div>
+      <div class="token-option" onclick="selectToken('GNOT')">GNOT</div>
+      <div class="token-option" onclick="closeTokenModal()">Cancel</div>
+    </div>
+  </div>
+
+  <script>
+    let selectedDirection = null;
+    let tokens = {
+      KAS: { icon: 'https://kaspa.org/assets/kaspa-logo.svg' },
+      KREX: { icon: 'https://via.placeholder.com/16?text=K' },
+      DINO: { icon: 'https://via.placeholder.com/16?text=D' },
+      GNOT: { icon: 'https://via.placeholder.com/16?text=G' }
+    };
+
+    let selectedTokens = {
+      from: 'KAS',
+      to: 'KREX'
+    };
+
+    function showInfo() {
+      alert("Swap tokens securely on the Kaspa network.");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      console.log("Theme toggled. Current mode:", document.body.classList.contains('dark-mode') ? "dark" : "light");
+    }
+
+    function openTokenModal(direction) {
+      selectedDirection = direction;
+      document.getElementById('tokenModal').style.display = 'block';
+    }
+
+    function closeTokenModal() {
+      document.getElementById('tokenModal').style.display = 'none';
+    }
+
+    function selectToken(token) {
+      const imgSrc = tokens[token]?.icon || 'https://via.placeholder.com/16';
+      const btn = document.getElementById(`token${capitalize(selectedDirection)}Btn`);
+      const label = document.getElementById(`token${capitalize(selectedDirection)}Label`);
+      const icon = document.getElementById(`token${capitalize(selectedDirection)}Img`);
+      label.textContent = token;
+      icon.src = imgSrc;
+      selectedTokens[selectedDirection] = token;
+      updateEmbedCode();
+      closeTokenModal();
+    }
+
+    function switchTokens() {
+      [selectedTokens.from, selectedTokens.to] = [selectedTokens.to, selectedTokens.from];
+      updateTokenButtons();
+      updateEmbedCode();
+    }
+
+    function updateTokenButtons() {
+      ['from', 'to'].forEach(direction => {
+        const token = selectedTokens[direction];
+        document.getElementById(`token${capitalize(direction)}Label`).textContent = token;
+        document.getElementById(`token${capitalize(direction)}Img`).src = tokens[token]?.icon || '';
+      });
+    }
+
+    function swapTokens() {
+      alert(`Swapping ${selectedTokens.from} to ${selectedTokens.to}...`);
+    }
+
+    function copyEmbedCode() {
+      const embed = document.getElementById("embedCode");
+      embed.select();
+      embed.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Copied to clipboard!");
+    }
+
+    function updateEmbedCode() {
+      document.getElementById("embedCode").value = `<iframe src="https://example.com/widget?from=${selectedTokens.from}&to=${selectedTokens.to}" width="400" height="600"></iframe>`;
+    }
+
+    function capitalize(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  </script>
+</body>
+</html>
