@@ -18,20 +18,20 @@
     .wallet-button, .copy-button {
       background: #02ABB8;
       border: none;
-      border-radius: 12px;
-      padding: 10px 20px;
-      margin-bottom: 20px;
-      color: white;
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-bottom: 16px;
+      color: #fff;
       font-weight: bold;
       cursor: pointer;
     }
     .theme-toggle {
       background: #e0e0e0;
       border: none;
-      border-radius: 12px;
-      padding: 6px 12px;
-      margin-bottom: 20px;
-      font-size: 14px;
+      border-radius: 8px;
+      padding: 4px 10px;
+      margin-bottom: 16px;
+      font-size: 13px;
       cursor: pointer;
     }
     .dark-mode {
@@ -46,11 +46,11 @@
     }
     .swap-container, .embed-container {
       background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      padding: 24px;
-      width: 400px;
-      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 20px;
+      width: 320px;
+      margin-bottom: 20px;
     }
     .swap-header {
       text-align: center;
@@ -64,6 +64,20 @@
       cursor: pointer;
       font-size: 18px;
       color: #02ABB8;
+    }
+    .info-popup {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 24px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      width: 260px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-size: 12px;
+      z-index: 10;
     }
     .token-input {
       background: #f0f0f0;
@@ -84,18 +98,18 @@
     .token-input input {
       background: transparent;
       border: none;
-      font-size: 20px;
-      width: 70%;
+      font-size: 18px;
+      width: 60%;
     }
     .token-button {
       background: #e0e0e0;
       border: none;
-      border-radius: 8px;
-      padding: 6px 12px;
+      border-radius: 6px;
+      padding: 4px 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
     .token-button img {
       width: 16px;
@@ -109,24 +123,24 @@
     .switch-button {
       background: #02ABB8;
       border: none;
-      color: white;
-      padding: 6px 10px;
+      color: #fff;
+      padding: 4px 8px;
       border-radius: 50%;
       cursor: pointer;
       display: block;
-      margin: 0 auto 16px;
+      margin: 0 auto 12px;
     }
     .swap-button {
       background: #02ABB8;
       border: none;
-      border-radius: 12px;
-      padding: 14px;
+      border-radius: 8px;
+      padding: 10px;
       width: 100%;
-      color: white;
-      font-size: 16px;
+      color: #fff;
+      font-size: 15px;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 12px;
+      margin-top: 10px;
     }
     .rate-preview {
       text-align: center;
@@ -185,6 +199,12 @@
     <div class="swap-header">
       <h2>Swap Tokens</h2>
       <span class="info-icon" onclick="showInfo()">ℹ️</span>
+      <div class="info-popup" id="infoPopup">
+        This widget lets you swap KRC-20 tokens on Kaspa. Select the tokens you want, enter an amount, and press Swap.
+        <div style="text-align:right;margin-top:8px;">
+          <button class="token-button" onclick="closeInfo()">Close</button>
+        </div>
+      </div>
     </div>
     <div class="token-input">
       <label>You pay</label>
@@ -213,7 +233,7 @@
   <div class="embed-container">
     <h3>Embed Swap Token Widget</h3>
     <label>Widget Configuration:</label>
-    <textarea id="embedCode" readonly><iframe src="https://example.com/widget?from=KAS&to=KREX" width="400" height="600"></iframe></textarea>
+    <textarea id="embedCode" readonly><iframe src="https://example.com/widget?from=KAS&to=KREX" width="320" height="500"></iframe></textarea>
     <button class="copy-button" onclick="copyEmbedCode()">Copy to Clipboard</button>
   </div>
 
@@ -243,12 +263,15 @@
     };
 
     function showInfo() {
-      alert("Swap tokens securely on the Kaspa network.");
+      document.getElementById('infoPopup').style.display = 'block';
+    }
+
+    function closeInfo() {
+      document.getElementById('infoPopup').style.display = 'none';
     }
 
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
-      console.log("Theme toggled. Current mode:", document.body.classList.contains('dark-mode') ? "dark" : "light");
     }
 
     function openTokenModal(direction) {
@@ -299,7 +322,7 @@
     }
 
     function updateEmbedCode() {
-      document.getElementById("embedCode").value = `<iframe src="https://example.com/widget?from=${selectedTokens.from}&to=${selectedTokens.to}" width="400" height="600"></iframe>`;
+      document.getElementById("embedCode").value = `<iframe src="https://example.com/widget?from=${selectedTokens.from}&to=${selectedTokens.to}" width="320" height="500"></iframe>`;
     }
 
     function capitalize(word) {
