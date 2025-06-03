@@ -1,0 +1,19 @@
+<!-- Example Kasplex Kiwi Wallet Integration Widget -->
+<div id="kiwi-wallet-widget">
+  <script src="https://unpkg.com/@kasplex/sdk-kiwi/dist/kiwi.min.js"></script>
+  <script>
+    // Initialize the Kasplex Kiwi wallet
+    const kiwi = new KiwiWallet({
+      network: 'kaspa-mainnet',
+      appName: 'MyKaspaDapp'
+    });
+
+    kiwi.on('ready', () => {
+      console.log('Kiwi wallet ready');
+      // Add your interaction logic here, e.g. request address
+      kiwi.requestAddress().then(address => {
+        console.log('User address:', address);
+      });
+    });
+  </script>
+</div>

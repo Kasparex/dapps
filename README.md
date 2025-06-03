@@ -15,4 +15,7 @@ This repository provides basic examples for quickly adding Kaspa-powered functio
 
 Each widget is a standalone snippet that can be embedded directly into a webpage. The snippets demonstrate how you might interact with Kaspa smart contracts without writing complex code.
 
-See the `widgets` folder for examples.
+See the `widgets` folder for examples such as:
+
+- `payment-widget.html` – minimal example showing how to embed a Kaspa payment form.
+- `kiwi-wallet-widget.html` – connects to the [Kasplex Kiwi SDK](https://github.com/kasplex/sdk-kiwi) for in-wallet interactions.
