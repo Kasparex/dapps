@@ -18,6 +18,13 @@ This is some paragraph text, with a [link](https://docs.gitbook.com) to our docs
 ## Heading 2
 - Point 1
 - Point 2
+# Heading
+
+This is some paragraph text, with a [link](https://docs.gitbook.com) to our docs. 
+
+## Heading 2
+- Point 1
+- Point 2
 - Point 3
 ```
 
