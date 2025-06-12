@@ -1,7 +1,9 @@
 ---
 icon: hand-wave
-cover: https://gitbookio.github.io/onboarding-template-images/header.png
-coverY: 0
+cover: >-
+  .gitbook/assets/20250611_0950_Futuristic Crypto
+  Innovator_remix_01jxezd6kcer8ryphzxynxdtwx.png
+coverY: 237
 layout:
   cover:
     visible: true
