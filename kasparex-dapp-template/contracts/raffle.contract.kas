@@ -1,0 +1,5 @@
+// Kaspa Smart Contract for Raffle Entry
+contract RaffleEntry {
+    address participant;
+    uint256 entryTime;
+}
