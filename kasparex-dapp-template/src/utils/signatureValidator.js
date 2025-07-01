@@ -1,0 +1,1 @@
+// JS utility for validating wallet signature

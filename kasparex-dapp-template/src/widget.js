@@ -1,0 +1,1 @@
+console.log('Widget logic loaded');
