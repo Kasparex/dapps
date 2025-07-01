@@ -2,14 +2,10 @@
 (Front-end + Contract-ready + Dev Guide included)
 
 ✅ Repo Name Suggestion:
-cpp
-Copy
-Edit
 kasparex-dapp-template
+
 📦 Folder Structure:
-bash
-Copy
-Edit
+/kasparex-dapp-template
 /kasparex-dapp-template
 │
 ├── /public
@@ -24,6 +20,7 @@ Edit
 ├── LICENSE
 ├── README.md              ← How to build, test, deploy, and submit
 └── preview.png            ← Placeholder banner for Kasparex listing
+
 📜 Sample README.md:
 markdown
 Copy
