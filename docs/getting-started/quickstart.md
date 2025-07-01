@@ -1,3 +1,42 @@
+<div style="background:#fff; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.05); padding:24px; max-width:700px; margin:auto; font-family:Roboto;">
+  <h2 style="color:#0097b2;">📤 Submit Your dApp to Kasparex</h2>
+  <p>Ready to go live? Fill out this short form to get your dApp listed and connected to the ecosystem.</p>
+  <form id="submitDappForm" style="display:flex; flex-direction:column; gap:16px;">
+    <label>🎯 dApp Title:<br><input type="text" name="title" required style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;"></label>
+    
+    <label>📝 Short Description:<br><textarea name="description" required rows="2" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;"></textarea></label>
+
+    <label>🧩 Embed-Ready Widget Code:<br><textarea name="widgetCode" required rows="6" placeholder="Paste your full HTML block here" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; font-family:monospace;"></textarea></label>
+
+    <label>🔗 Live Preview URL (optional):<br><input type="url" name="previewUrl" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;"></label>
+
+    <label>🔐 Smart Contract Hash:<br><input type="text" name="contractHash" placeholder="Optional" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;"></label>
+
+    <label>💸 Revenue Share Model:<br>
+      <select name="revshare" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;">
+        <option value="yes">Yes – Shared with Kasparex</option>
+        <option value="no">No – 100% to developer</option>
+      </select>
+    </label>
+
+    <label>📂 Dev Group URL:<br><input type="url" name="devGroup" required style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;"></label>
+
+    <label>📸 Preview Image URL:<br><input type="url" name="image" placeholder="Link to a screenshot or banner" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;"></label>
+
+    <label>📬 Developer Contact (X / Email):<br><input type="text" name="contact" required style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc;"></label>
+
+    <button type="submit" style="background:#0097b2; color:#fff; padding:12px 24px; border:none; border-radius:12px; font-size:16px; cursor:pointer;">🚀 Submit dApp</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("submitDappForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  alert("✅ Submission received! The Kasparex team will review your dApp within 1–3 days.");
+});
+</script>
+
+
 🧩 Official Kasparex dApp Listing Process
 (Step-by-step for Builders, Dev Teams, and Community Moderation)
 
