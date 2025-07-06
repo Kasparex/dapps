@@ -1,25 +1,3 @@
----
-icon: hand-wave
-cover: >-
-  .gitbook/assets/20250611_0950_Futuristic Crypto
-  Innovator_remix_01jxezd6kcer8ryphzxynxdtwx.png
-coverY: 237
-layout:
-  cover:
-    visible: true
-    size: full
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Welcome
 
 Welcome to the GitBook Starter Template! Here you'll get an overview of all the amazing features GitBook offers to help you build beautiful, interactive documentation.
