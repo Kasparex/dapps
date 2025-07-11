@@ -1,12 +1,8 @@
----
-icon: bullseye-arrow
----
-
-# Quickstart
+# 📜 Quickstart
 
 
 
-### 🧭 Documentation Structure v1
+### 🧭 Structure
 
 #### 1. 🏠 Welcome
 
