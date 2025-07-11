@@ -1,8 +1,4 @@
----
-icon: pen-to-square
----
-
-# Editor
+# 📂 Kasparex UI Showcase #1
 
 GitBook has a powerful block-based editor that allows you to seamlessly create, update, and enhance your content.
 
