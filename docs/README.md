@@ -1,10 +1,6 @@
----
-icon: hand-wave
----
+# 👋 Intro
 
-# Intro
-
-## 👋 Welcome to Kasparex Docs
+## Welcome to Kasparex Docs
 
 Kasparex is the home of utility-first tools and decentralized apps (dApps) built for the **Kaspa** ecosystem — powered by **Krex Token** ($KREX).\
 Whether you're a builder, project owner, or curious holder, this documentation will guide you through all our global modules, embeddable widgets, and smart contract-powered utilities.
@@ -30,7 +26,7 @@ Whether you're a builder, project owner, or curious holder, this documentation w
 
 ***
 
-### 🪙 About KREX Token
+### 👋 About KREX Token
 
 KREX is the main token of the Kasparex ecosystem. It's not just a memecoin — it's the fuel for:
 
