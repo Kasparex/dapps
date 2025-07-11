@@ -6,7 +6,7 @@ icon: bullseye-arrow
 
 
 
-### 🧭 Documentation Structure
+### 🧭 Documentation Structure v1
 
 #### 1. 🏠 Welcome
 
