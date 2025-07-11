@@ -10,7 +10,9 @@ GitBook offers a range of block types for you to add to your content inline — 
 
 Either start typing below, or press `/` to see a list of the blocks you can insert into your page.
 
-### Add a new block
+
+
+{% embed url="https://kasparex.github.io/kasparex-global/kasparex-ui-showcase.html" %}
 
 {% stepper %}
 {% step %}
