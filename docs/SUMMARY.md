@@ -7,11 +7,11 @@
 * [📜 Quickstart](getting-started/quickstart.md)
 * [Publish your docs](getting-started/publish-your-docs.md)
 
-## Basics
+## 🧮 DAPPS
 
-* [📂 Kasparex UI Showcase #1](basics/editor.md)
-* [Markdown](basics/markdown.md)
-* [Images & media](basics/images-and-media.md)
-* [Interactive blocks](basics/interactive-blocks.md)
-* [OpenAPI](basics/openapi.md)
-* [Integrations](basics/integrations.md)
+* [📂 Kasparex UI Showcase #1](dapps/editor.md)
+* [Markdown](dapps/markdown.md)
+* [Images & media](dapps/images-and-media.md)
+* [Interactive blocks](dapps/interactive-blocks.md)
+* [OpenAPI](dapps/openapi.md)
+* [Integrations](dapps/integrations.md)
