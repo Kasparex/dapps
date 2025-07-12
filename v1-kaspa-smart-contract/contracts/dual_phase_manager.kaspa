@@ -1,0 +1,12 @@
+contract DualPhaseManager {
+    mapping(address => bool) public isNativeToken;
+
+    function isAccepted(address token) public view returns (bool) {
+        return isNativeToken[token];
+    }
+
+    function setAccepted(address token, bool value) public {
+        // TODO: Admin-only logic
+        isNativeToken[token] = value;
+    }
+}

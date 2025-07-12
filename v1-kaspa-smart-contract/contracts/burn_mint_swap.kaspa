@@ -1,0 +1,12 @@
+contract BurnMintSwap {
+    address public feeWallet = "kaspa:qqd36zqt94yr23cmjj73d34e2lc05ltd9duw582s303m30ux567ps9ljnhp6y";
+
+    event SwapCompleted(address indexed user, uint256 amount);
+
+    function swap(address user, uint256 amount) public {
+        // TODO: Verify burn
+        // TODO: Mint same amount to sender
+        // TODO: Send fee to feeWallet
+        emit SwapCompleted(user, amount);
+    }
+}

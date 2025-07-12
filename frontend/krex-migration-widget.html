@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KREX Migration Panel</title>
+  <style>
+    body {
+      font-family: Roboto, sans-serif;
+      background: white;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+    .k-widget {
+      max-width: 600px;
+      margin: auto;
+      border-radius: 16px;
+      box-shadow: 0 0 16px rgba(0,0,0,0.06);
+      padding: 20px;
+      border: 1px solid #eee;
+    }
+    .k-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .k-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+    .k-tab.active {
+      background: #0097b2;
+      color: white;
+    }
+    .k-panel {
+      display: none;
+    }
+    .k-panel.active {
+      display: block;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-family: Roboto, sans-serif;
+    }
+    button {
+      background: #0097b2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .k-info {
+      font-size: 14px;
+      color: #444;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="k-widget">
+    <div class="k-tabs">
+      <div class="k-tab active" onclick="switchTab(0)">Swap</div>
+      <div class="k-tab" onclick="switchTab(1)">Claim</div>
+      <div class="k-tab" onclick="switchTab(2)">Status</div>
+    </div>
+
+    <div class="k-panel active">
+      <h3>Burn & Swap Old KREX</h3>
+      <input type="text" id="swapWallet" placeholder="Your Kaspa Address">
+      <button onclick="handleSwap()">Swap Now</button>
+      <div class="k-info">🔥 Burn old Kasplex-KREX, mint native KREX 1:1.<br/>Fee sent to: <b>kaspa:...nhp6y</b></div>
+    </div>
+
+    <div class="k-panel">
+      <h3>Claim Airdropped KREX</h3>
+      <input type="text" id="claimWallet" placeholder="Your Kaspa Address">
+      <button onclick="handleClaim()">Claim Now</button>
+      <div class="k-info">📸 Snapshot-based. Claim before deadline.<br/>Fee sent to: <b>kaspa:...nhp6y</b></div>
+    </div>
+
+    <div class="k-panel">
+      <h3>Migration Status</h3>
+      <input type="text" id="statusWallet" placeholder="Your Kaspa Address">
+      <button onclick="handleStatus()">Check Status</button>
+      <div id="statusOutput" class="k-info"></div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.k-tab');
+      const panels = document.querySelectorAll('.k-panel');
+      tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
+      panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
+    }
+
+    function handleSwap() {
+      const wallet = document.getElementById('swapWallet').value;
+      alert(`🔥 Swapping old KREX for native...\nWallet: ${wallet}`);
+    }
+
+    function handleClaim() {
+      const wallet = document.getElementById('claimWallet').value;
+      alert(`🎁 Claiming airdropped native KREX...\nWallet: ${wallet}`);
+    }
+
+    function handleStatus() {
+      const wallet = document.getElementById('statusWallet').value;
+      document.getElementById('statusOutput').innerHTML = `⏳ Migration status for <b>${wallet}</b>:<br/>Old KREX: 10,000<br/>New KREX: 7,500<br/>Status: ⚠️ Partial`;
+    }
+  </script>
+</body>
+</html>

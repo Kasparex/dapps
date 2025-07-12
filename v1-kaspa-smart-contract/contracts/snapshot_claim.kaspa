@@ -1,0 +1,18 @@
+contract SnapshotClaim {
+    address public feeWallet = "kaspa:qqd36zqt94yr23cmjj73d34e2lc05ltd9duw582s303m30ux567ps9ljnhp6y";
+    mapping(address => uint256) public claimable;
+    mapping(address => bool) public claimed;
+
+    event Claimed(address indexed user, uint256 amount);
+
+    function claim() public {
+        require(!claimed[msg.sender], "Already claimed");
+        uint256 amount = claimable[msg.sender];
+        require(amount > 0, "Nothing to claim");
+
+        claimed[msg.sender] = true;
+        // TODO: Mint 'amount' native KREX to user
+        // TODO: Send fee to feeWallet
+        emit Claimed(msg.sender, amount);
+    }
+}
